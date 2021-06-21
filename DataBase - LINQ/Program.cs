@@ -25,8 +25,10 @@ namespace proj_zal
             //Gain();
             //Console.WriteLine("==============================================================================================");
             //Search();
-            Console.WriteLine("==============================================================================================");
-            Compare();
+            //Console.WriteLine("==============================================================================================");
+            //Compare();
+            //Console.WriteLine("==============================================================================================");
+            //AddData();
             Console.ReadKey();
         }
         public static void ImportData()
@@ -57,6 +59,24 @@ namespace proj_zal
                 }
             }
             return returnValue;
+        }
+        public static void AddData()
+        {
+            using (var db = new GamesDb())
+            {
+                var game = new Games()
+                {
+                    gamename = "TEST",
+                    year = 6666,
+                    month = "TEST",
+                    avg = 666666,
+                    gain = "66.66",
+                    peak = 666666,
+                    avg_peak_perc = "66.6666%"
+                };
+                db.tSteamChart.Add(game);
+                db.SaveChanges();
+            }
         }
         public static void SortGames()
         {
